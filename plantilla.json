@@ -1,0 +1,34 @@
+
+    "messaging_product": "whatsapp",
+    "recipient_type": "individual",
+    "to": "PHONE_NUMBER",
+    "type": "template",
+    "template": {
+
+      "name": "aditeccl",
+      "language": {
+        "code": "LANGUAGE_AND_LOCALE_CODE"
+      },
+      "components": [
+        {
+          "type": "header",
+          "parameters": [
+            {
+              "type": "image",
+              "image": {
+                "link": "http(s)://URL"
+              }
+            }
+          ]
+        },
+        {
+          "type": "body",
+          "parameters": [
+            {
+              "type": "text",
+              "text": "TEXT_STRING"
+            }
+          ]
+        }
+]
+}

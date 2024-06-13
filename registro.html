@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de usuario</title>
+    <!-- Incluye los archivos de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function validarFormulario() {
+            var nombre = document.getElementById("nombre").value;
+            var contrasena = document.getElementById("contrasena").value;
+            var contrasenaError = document.getElementById("contrasenaError");
+
+            // Validar nombre de usuario
+            if (nombre.length < 3) {
+                alert("El nombre de usuario debe tener al menos 3 caracteres.");
+                return false;
+            }
+
+            // Validar contraseña
+            if (contrasena.length < 8) {
+                contrasenaError.innerHTML = "La contraseña debe tener al menos 8 caracteres.";
+                return false;
+            }
+            if (!contrasena.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{"':;?/.><,])(?!.*\s).{8,}$/)) {
+                contrasenaError.innerHTML = "La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.";
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 100vh;">
+        <div class="container p-4 border rounded text-center">
+            <h1 class="mb-4">Registro de usuario</h1>
+            <form action="register.php" method="POST" onsubmit="return validarFormulario()">
+                <div class="form-group">
+                    <label for="nombre">Nombre de usuario:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                    <span id="contrasenaError" class="text-danger"></span> <!-- Mensaje de error de contraseña -->
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+            </form>
+            <p class="mt-3"><a href="index.html">Volver a la página de inicio de sesión</a></p>
+        </div>
+    </div>
+</body>
+</html>
